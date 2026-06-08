@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magellan IT Service Desk — Theme Preview</title>
+<link rel="stylesheet" href="css/magellan-theme.css">
+<style>
+/* Preview-only overrides to simulate osTicket structure without breaking theme */
+* { box-sizing: border-box; }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <!-- Header -->
+  <div id="header">
+    <div id="logo">
+      <span class="valign-helper"></span>
+      <img src="logos/MLH-logo-black-9.png" alt="Magellan IT Service Desk" style="max-height:55px;">
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div id="nav">
+    <li><a class="home active" href="#">Home</a></li>
+    <li><a class="kb" href="#">Knowledge Base</a></li>
+    <li><a class="new" href="#">New Ticket</a></li>
+    <li><a class="status" href="#">Check Ticket Status</a></li>
+    <li><a class="tickets" href="#">My Tickets</a></li>
+  </div>
+
+  <!-- Content -->
+  <div id="content">
+    <h1>Welcome to Magellan IT Service Desk</h1>
+    <p style="color:#757575;margin-bottom:20px;">To create a new ticket, please fill out the form below. Fields marked with an asterisk (*) are required.</p>
+
+    <!-- Notice Bar -->
+    <div id="msg_notice" style="margin-bottom:20px;">
+      <strong>Notice:</strong> Our support hours are Monday–Friday, 8:00 AM – 6:00 PM EST.
+    </div>
+
+    <!-- Warning Bar -->
+    <div class="warning_bar" style="margin-bottom:20px;">
+      <strong>Warning:</strong> Scheduled maintenance window: Saturday 2:00 AM – 4:00 AM.
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landing_page" style="overflow:hidden;margin-bottom:30px;">
+      <div style="display:flex;gap:30px;">
+        <div id="new_ticket">
+          <h3 style="color:#1A2B48;">Open a New Ticket</h3>
+          <p style="color:#757575;font-size:14px;line-height:1.6;margin-bottom:15px;">
+            Submit a new support request to our IT team. We'll respond as quickly as possible.
+          </p>
+          <a href="#" class="button green">New Ticket</a>
+        </div>
+        <div id="check_status">
+          <h3 style="color:#1A2B48;">Check Ticket Status</h3>
+          <p style="color:#757575;font-size:14px;line-height:1.6;margin-bottom:15px;">
+            View the current status and updates for your existing tickets.
+          </p>
+          <a href="#" class="button blue">Check Status</a>
+        </div>
+      </div>
+    </div>
+
+    <hr style="margin:30px 0;border:0;border-top:1px solid #e5ded6;">
+
+    <!-- Sample Ticket Form -->
+    <h2 style="color:#1A2B48;">Sample Ticket Form</h2>
+    <div id="ticketForm" style="margin-top:15px;">
+      <table style="width:100%;table-layout:fixed;">
+        <tr>
+          <td style="width:160px;padding:8px 0;"><label class="required">Email Address</label></td>
+          <td style="padding:8px 0;"><input type="email" style="width:100%;" placeholder="you@magellanluxuryhotels.com" value="asalvador@magellanluxuryhotels.com"></td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;"><label class="required">Full Name</label></td>
+          <td style="padding:8px 0;"><input type="text" style="width:100%;" value="Albie Salvador"></td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;"><label class="required">Help Topic</label></td>
+          <td style="padding:8px 0;">
+            <select style="width:100%;padding:8px;border:1px solid #e5ded6;border-radius:4px;">
+              <option>Select a Help Topic</option>
+              <option>Hardware / Equipment</option>
+              <option>Software / Applications</option>
+              <option selected>Network / VPN / WiFi</option>
+              <option>Email / M365</option>
+              <option>SugarCRM / LUX</option>
+              <option>Telephony / Telefonica</option>
+              <option>Security / Access</option>
+              <option>General IT Request</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;"><label class="required">Subject</label></td>
+          <td style="padding:8px 0;"><input type="text" style="width:100%;" value="Cannot connect to VPN"></td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;"><label class="required">Message</label></td>
+          <td style="padding:8px 0;"><textarea rows="4" style="width:100%;">When I try to connect to the VPN from home, I get an error saying "Connection timed out". This started happening after the weekend.</textarea></td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;"><label>Priority</label></td>
+          <td style="padding:8px 0;">
+            <select style="width:200px;padding:8px;border:1px solid #e5ded6;border-radius:4px;">
+              <option>Low</option>
+              <option selected>Normal</option>
+              <option>High</option>
+              <option>Emergency</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="padding:15px 0;">
+            <a href="#" class="button primary" style="display:inline-block;line-height:1.4;padding:10px 28px;">Submit Ticket</a>
+            <a href="#" class="button" style="display:inline-block;line-height:1.4;padding:10px 28px;margin-left:10px;">Cancel</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <hr style="margin:30px 0;border:0;border-top:1px solid #e5ded6;">
+
+    <!-- Sample Ticket Table -->
+    <h2 style="color:#1A2B48;">Sample Ticket Queue (Agent View)</h2>
+    <table id="ticketTable" style="width:100%;margin-top:15px;">
+      <caption>Open Tickets (5)</caption>
+      <tr>
+        <th style="width:80px;">#</th>
+        <th>Date</th>
+        <th>Subject</th>
+        <th>From</th>
+        <th>Priority</th>
+        <th>Assigned To</th>
+      </tr>
+      <tr>
+        <td><a href="#">89012</a></td>
+        <td>Jun 8, 2026</td>
+        <td>Cannot connect to VPN</td>
+        <td>Albie Salvador</td>
+        <td>Normal</td>
+        <td>Neil D.</td>
+      </tr>
+      <tr class="alt">
+        <td><a href="#">89011</a></td>
+        <td>Jun 8, 2026</td>
+        <td>Printer on 3rd floor not working</td>
+        <td>Maria Lopez</td>
+        <td>Low</td>
+        <td>Jatinder S.</td>
+      </tr>
+      <tr>
+        <td><a href="#">89010</a></td>
+        <td>Jun 7, 2026</td>
+        <td>SugarCRM login issues</td>
+        <td>Carlos Ruiz</td>
+        <td>High</td>
+        <td>Neil D.</td>
+      </tr>
+      <tr class="alt">
+        <td><a href="#">89009</a></td>
+        <td>Jun 7, 2026</td>
+        <td>New employee onboarding — laptop needed</td>
+        <td>HR Dept</td>
+        <td>Normal</td>
+        <td><em style="color:#757575;">Unassigned</em></td>
+      </tr>
+      <tr>
+        <td><a href="#">89008</a></td>
+        <td>Jun 6, 2026</td>
+        <td>Email not syncing on mobile</td>
+        <td>Patricia Gomez</td>
+        <td>Normal</td>
+        <td>Jatinder S.</td>
+      </tr>
+    </table>
+
+    <hr style="margin:30px 0;border:0;border-top:1px solid #e5ded6;">
+
+    <!-- Sample Buttons -->
+    <h2 style="color:#1A2B48;">Button Styles</h2>
+    <div style="margin-top:15px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+      <a href="#" class="button">Default (Teal)</a>
+      <a href="#" class="button green">Green → Teal</a>
+      <a href="#" class="button blue">Blue → Navy</a>
+      <a href="#" class="button primary">Primary (Gold)</a>
+      <a href="#" class="action-button">Action Button</a>
+    </div>
+
+    <hr style="margin:30px 0;border:0;border-top:1px solid #e5ded6;">
+
+    <!-- Sample KB -->
+    <h2 style="color:#1A2B48;">Knowledge Base Preview</h2>
+    <div style="margin-top:15px;display:flex;gap:12px;">
+      <div class="featured-category">
+        <i style="font-size:28px;">💻</i>
+        <span class="category-name"><a href="#">Hardware / Equipment</a></span>
+        <div class="article-headline">
+          <div class="article-teaser">How to request a new laptop, monitor, or peripheral device for your workstation.</div>
+        </div>
+      </div>
+      <div class="featured-category">
+        <i style="font-size:28px;">🌐</i>
+        <span class="category-name"><a href="#">Network / VPN / WiFi</a></span>
+        <div class="article-headline">
+          <div class="article-teaser">Configure VPN access, troubleshoot WiFi connectivity, and network setup guides.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <p>Copyright &copy; 2026 Magellan Luxury Hotels — IT Service Desk</p>
+    <a href="#" id="poweredBy">Powered by osTicket</a>
+  </div>
+</div>
+
+</body>
+</html>

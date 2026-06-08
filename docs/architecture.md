@@ -21,30 +21,30 @@ Ship iteratively. Phase 1 is a working ticketing system with basic branding. Pha
 
 ```
 ┌─────────────────────────────────────────────┐
-│            Magellan VPN / Network            │
-│                                              │
-│  ┌────────────────────────────────────────┐  │
-│  │     Power BI Server (172.24.21.215)    │  │
-│  │                                        │  │
+│            Magellan VPN / Network           │
+│                                             │
+│  ┌───────────────────────────────────────┐  │
+│  │     Power BI Server (172.24.21.215)   │  │
+│  │                                       │  │
 │  │  ┌──────────┐  ┌──────────┐           │  │
 │  │  │ osTicket │  │  MySQL   │           │  │
 │  │  │  (Docker)│──│ 5.7(Dock)│           │  │
 │  │  └────┬─────┘  └──────────┘           │  │
-│  │       │                                │  │
-│  │       │ Port 8080                      │  │
-│  └───────┼────────────────────────────────┘  │
-│          │                                   │
-│    ┌─────┴──────┐                            │
-│    │  IT Team   │    Agents via /scp         │
-│    │  (Albie,   │                            │
-│    │  Neil,     │    Customers via /         │
-│    │  Jatinder) │                            │
-│    └────────────┘                            │
-│                                              │
-│  ┌──────────────┐                            │
-│  │ M365 Exchange│── Email ticket creation    │
-│  │   Online     │── Notifications            │
-│  └──────────────┘                            │
+│  │       │                               │  │
+│  │       │ Port 8080                     │  │
+│  └───────┼───────────────────────────────┘  │
+│          │                                  │
+│    ┌─────┴──────┐                           │
+│    │  IT Team   │    Agents via /scp        │
+│    │  (Albie,   │                           │
+│    │  Neil,     │    Customers via /        │
+│    │  Jatinder) │                           │
+│    └────────────┘                           │
+│                                             │
+│  ┌──────────────┐                           │
+│  │ M365 Exchange│── Email ticket creation   │
+│  │   Online     │── Notifications           │
+│  └──────────────┘                           │
 └─────────────────────────────────────────────┘
 ```
 

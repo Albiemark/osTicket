@@ -1,0 +1,62 @@
+<div style="margin:0;padding:0;background-color:#f2f2f2;font-family:'Roboto',Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f2f2f2;padding:20px 0;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,5,54,0.08);">
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#000536;padding:20px 30px;text-align:center;">
+              <h1 style="color:#ffffff;font-family:'Quicksand',Helvetica,Arial,sans-serif;font-size:22px;margin:0;">Magellan IT Service Desk</h1>
+            </td>
+          </tr>
+          <!-- Body -->
+          <tr>
+            <td style="padding:30px;">
+              <h2 style="color:#1A2B48;font-family:'Quicksand',Helvetica,Arial,sans-serif;font-size:18px;margin:0 0 5px 0;">Update on Ticket #%{ticket.number}</h2>
+              <p style="color:#757575;font-size:13px;margin:0 0 20px 0;">%{ticket.subject}</p>
+              <!-- Response Card -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f9f9f9;border:1px solid #e5ded6;border-radius:6px;margin:0 0 20px 0;">
+                <tr>
+                  <td style="padding:4px 16px;border-bottom:1px solid #e5ded6;">
+                    <p style="margin:0;font-size:12px;color:#757575;">Response from <strong style="color:#1A2B48;">%{staff.name}</strong></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px;">
+                    <div style="color:#1A2B48;font-size:14px;line-height:1.6;">%{response}</div>
+                  </td>
+                </tr>
+              </table>
+              <!-- CTA Button -->
+              <table cellpadding="0" cellspacing="0" style="margin:20px 0;">
+                <tr>
+                  <td style="background-color:#00bcd1;border-radius:5px;padding:10px 24px;">
+                    <a href="%{ticket.client_link}" style="color:#ffffff;text-decoration:none;font-family:'Quicksand',Helvetica,Arial,sans-serif;font-weight:600;font-size:14px;">Reply to Ticket</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="color:#757575;font-size:12px;margin:15px 0 0 0;">If the button above doesn't work, copy and paste this link into your browser:<br>
+                <a href="%{ticket.client_link}" style="color:#00bcd1;word-break:break-all;">%{ticket.client_link}</a>
+              </p>
+            </td>
+          </tr>
+          <!-- Signature -->
+          <tr>
+            <td style="padding:0 30px 20px 30px;">
+              <div style="color:#757575;font-size:13px;line-height:1.5;border-top:1px solid #e5ded6;padding-top:15px;">
+                %{signature}
+              </div>
+            </td>
+          </tr>
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#000536;padding:20px 30px;text-align:center;">
+              <p style="color:rgba(255,255,255,0.6);font-size:12px;margin:0;">Magellan Luxury Hotels — IT Service Desk</p>
+              <p style="color:rgba(255,255,255,0.4);font-size:11px;margin:8px 0 0 0;">This is an automated message. Please do not reply directly to this email.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

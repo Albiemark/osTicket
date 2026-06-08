@@ -1,0 +1,506 @@
+/* ============================================================
+   Magellan IT Service Desk — Custom osTicket Theme
+   ============================================================
+   Colors lifted from magellanluxuryhotels.com:
+     Primary:   #00bcd1 (Teal)
+     Secondary: #daa520 (Gold)
+     Dark:      #000536 (Navy)
+     Text:      #1A2B48 (Dark Slate)
+     Muted:     #757575 (Gray)
+     BG:        #f2f2f2 (Light Gray)
+     Card:      #ffffff (White)
+     Border:    #e5ded6 (Cream)
+   ============================================================ */
+
+/* ---------- Google Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ---------- Root Variables ---------- */
+:root {
+  --mlh-teal: #00bcd1;
+  --mlh-teal-dark: #0097a7;
+  --mlh-teal-light: #e0f7fa;
+  --mlh-gold: #daa520;
+  --mlh-gold-dark: #b8860b;
+  --mlh-navy: #000536;
+  --mlh-navy-light: #0a0a5e;
+  --mlh-slate: #1A2B48;
+  --mlh-gray: #757575;
+  --mlh-bg: #f2f2f2;
+  --mlh-card: #ffffff;
+  --mlh-border: #e5ded6;
+  --mlh-success: #00bcd1;
+  --mlh-warning: #daa520;
+  --mlh-error: #cf2e2e;
+}
+
+/* ---------- Base / Reset ---------- */
+body,
+input,
+select,
+textarea {
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--mlh-slate);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+}
+
+/* ---------- Links ---------- */
+a, .link {
+  color: var(--mlh-teal);
+  text-decoration: none;
+}
+
+a:hover, .link:hover {
+  color: var(--mlh-teal-dark);
+  border-bottom: 1px dotted var(--mlh-teal-dark);
+}
+
+h1 {
+  color: var(--mlh-teal);
+  font-weight: 600;
+}
+
+/* ---------- Page Background ---------- */
+body {
+  background: var(--mlh-bg);
+}
+
+/* ---------- Container ---------- */
+#container {
+  background: var(--mlh-card);
+  box-shadow: 0 2px 12px rgba(0, 5, 54, 0.08);
+}
+
+/* ---------- Header ---------- */
+#header {
+  background: var(--mlh-navy);
+  height: auto;
+  min-height: 71px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+}
+
+#header #logo img {
+  max-height: 55px;
+  filter: brightness(0) invert(1); /* White logo on navy bg */
+}
+
+#header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Navigation Bar ---------- */
+#nav {
+  background: var(--mlh-navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 5, 54, 0.15);
+  margin: 0;
+  padding: 0 10px;
+  height: auto;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+#nav li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+}
+
+#nav li a {
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  padding: 0 16px 0 36px;
+  margin-left: 4px;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 0;
+  background-position: 12px 50%;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#nav li a.active,
+#nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+#nav li a.active {
+  border-bottom: 2px solid var(--mlh-teal);
+}
+
+/* ---------- Buttons ---------- */
+.button,
+.button:visited {
+  background: var(--mlh-teal);
+  color: #fff;
+  font-family: 'Quicksand', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 188, 209, 0.3);
+  text-shadow: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+  background: var(--mlh-teal-dark);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 188, 209, 0.4);
+}
+
+.green.button,
+.green.button:visited {
+  background-color: var(--mlh-teal);
+}
+
+.green.button:hover {
+  background-color: var(--mlh-teal-dark);
+}
+
+.blue.button,
+.blue.button:visited {
+  background-color: var(--mlh-navy);
+}
+
+.blue.button:hover {
+  background-color: var(--mlh-navy-light);
+}
+
+/* Primary CTA — Gold */
+.button.primary,
+.button.gold {
+  background-color: var(--mlh-gold);
+  box-shadow: 0 2px 4px rgba(218, 165, 32, 0.3);
+}
+
+.button.primary:hover,
+.button.gold:hover {
+  background-color: var(--mlh-gold-dark);
+  box-shadow: 0 4px 8px rgba(218, 165, 32, 0.4);
+}
+
+/* ---------- Action Buttons ---------- */
+.action-button {
+  border: 1px solid var(--mlh-border);
+  background-color: var(--mlh-card);
+  color: var(--mlh-slate) !important;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.action-button:hover {
+  border-color: var(--mlh-teal);
+  background-color: var(--mlh-teal-light);
+}
+
+.action-button span,
+.action-button a {
+  color: var(--mlh-slate) !important;
+}
+
+/* ---------- Content Area ---------- */
+#content {
+  padding: 24px 20px;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+  background: var(--mlh-navy);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+#footer a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#footer a:hover {
+  color: var(--mlh-teal);
+}
+
+#footer #poweredBy {
+  filter: brightness(0) invert(0.6);
+}
+
+/* ---------- Ticket Table ---------- */
+#ticketTable {
+  border: 1px solid var(--mlh-border);
+}
+
+#ticketTable caption {
+  background: var(--mlh-navy);
+  color: #fff;
+  border: 1px solid var(--mlh-navy);
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-weight: 600;
+}
+
+#ticketTable th {
+  background: var(--mlh-teal-light);
+  border: 1px solid var(--mlh-border);
+  color: var(--mlh-slate);
+  font-weight: 500;
+}
+
+#ticketTable td {
+  border: 1px solid var(--mlh-border);
+}
+
+#ticketTable tr.alt td {
+  background: #fafafa;
+}
+
+/* ---------- Info Table ---------- */
+.infoTable {
+  background: var(--mlh-teal-light);
+}
+
+/* ---------- Client Login Box ---------- */
+#clientLogin {
+  background: var(--mlh-card);
+  border: 1px solid var(--mlh-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 5, 54, 0.06);
+}
+
+/* ---------- Forms ---------- */
+#ticketForm div input,
+#clientLogin div input,
+#ticketForm div textarea,
+#clientLogin div textarea {
+  border: 1px solid var(--mlh-border);
+  border-radius: 4px;
+  padding: 8px 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#ticketForm div input:focus,
+#clientLogin div input:focus,
+#ticketForm div textarea:focus,
+#clientLogin div textarea:focus {
+  border-color: var(--mlh-teal);
+  box-shadow: 0 0 0 3px rgba(0, 188, 209, 0.15);
+  outline: none;
+}
+
+#ticketForm div.error input,
+#clientLogin div.error input {
+  border-color: var(--mlh-error);
+}
+
+#ticketForm div.error label,
+#clientLogin div.error label {
+  color: var(--mlh-error);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar .content {
+  border: 1px solid var(--mlh-border);
+  background: var(--mlh-card);
+  border-radius: 6px;
+}
+
+/* ---------- Knowledge Base ---------- */
+.featured-category i {
+  color: rgba(0, 188, 209, 0.8) !important;
+}
+
+#kb > li {
+  border-bottom: 1px solid var(--mlh-border);
+}
+
+#faq ol li a:hover {
+  background-color: var(--mlh-teal-light);
+}
+
+/* ---------- Alerts & Notices ---------- */
+#msg_notice {
+  border: 1px solid var(--mlh-teal);
+  background: url('../assets/default/images/icons/ok.png') 10px 50% no-repeat var(--mlh-teal-light);
+  color: var(--mlh-teal-dark);
+}
+
+#msg_warning, .warning-banner {
+  border: 1px solid var(--mlh-gold);
+  background: url('../assets/default/images/icons/alert.png') 10px 50% no-repeat #fef9e7;
+}
+
+#msg_error {
+  border: 1px solid var(--mlh-error);
+  background: url('../assets/default/images/icons/error.png') 10px 50% no-repeat #fff0f0;
+}
+
+/* ---------- Search Bar ---------- */
+.searchbar .search,
+.search-form .search {
+  border: 1px solid var(--mlh-border);
+  border-radius: 6px;
+  padding: 10px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchbar .search:focus,
+.search-form .search:focus {
+  border-color: var(--mlh-teal);
+  box-shadow: 0 0 0 3px rgba(0, 188, 209, 0.15);
+  outline: none;
+}
+
+/* ---------- Reply Area ---------- */
+#reply {
+  background: #fafafa;
+  border: 1px solid var(--mlh-border);
+  border-radius: 6px;
+}
+
+#reply h2 {
+  border-bottom: 2px solid var(--mlh-teal-light);
+  color: var(--mlh-slate);
+}
+
+/* ---------- Loading Overlay ---------- */
+#loading {
+  border: 1px solid var(--mlh-teal);
+}
+
+#loading h4 {
+  color: var(--mlh-teal-dark);
+}
+
+/* ---------- Notice / Warning Bars ---------- */
+.notice_bar {
+  border: 1px solid var(--mlh-teal);
+  background: var(--mlh-teal-light);
+}
+
+.warning_bar {
+  border: 1px solid var(--mlh-gold);
+  background: #fef9e7;
+}
+
+.error_bar {
+  border: 1px solid var(--mlh-error);
+  background: #fff0f0;
+}
+
+/* ---------- Landing Page ---------- */
+#landing_page #new_ticket {
+  background: url('../assets/default/images/new_ticket_icon.png') top left no-repeat;
+}
+
+#landing_page #check_status {
+  background: url('../assets/default/images/check_status_icon.png') top left no-repeat;
+}
+
+/* ---------- Pagination ---------- */
+#pagination li a:hover {
+  color: var(--mlh-teal);
+}
+
+/* ---------- Scrollbar (Webkit) ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mlh-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mlh-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mlh-gray);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: var(--mlh-teal);
+  color: #fff;
+}
+
+/* ============================================================
+   SCP (Admin Panel) Overrides
+   ============================================================ */
+
+/* SCP header bar */
+#headerSCP {
+  background: var(--mlh-navy) !important;
+}
+
+/* SCP navigation */
+#navSCP {
+  background: var(--mlh-navy) !important;
+}
+
+/* SCP links */
+#navSCP a {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+#navSCP a:hover {
+  color: #fff !important;
+}
+
+/* ============================================================
+   Responsive / Mobile
+   ============================================================ */
+@media (max-width: 768px) {
+  #container {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  #header {
+    padding: 10px 16px;
+  }
+
+  #header #logo img {
+    max-height: 40px;
+  }
+
+  #nav li a {
+    padding: 0 10px 0 30px;
+    font-size: 12px;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #ticketForm td textarea,
+  #clientLogin td textarea,
+  #ticketForm div textarea,
+  #clientLogin div textarea {
+    width: 100%;
+  }
+}

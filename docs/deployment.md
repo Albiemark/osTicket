@@ -69,9 +69,26 @@ Create Magellan-specific help topics:
 
 ## Step 5: Apply Branding
 
-1. Replace logo files in the osTicket assets
-2. Apply custom CSS from `branding/css/`
-3. Upload branded email templates
+### 5a. Upload Logo
+1. In Admin Panel, go to **Settings → Pages**
+2. Upload `branding/logos/MLH-logo-black-9.png` as the client logo
+3. The navy header will automatically invert the logo to white via CSS
+
+### 5b. Apply Custom Theme CSS
+1. Open `branding/css/magellan-theme.css` from this repo
+2. In Admin Panel, go to **Settings → Pages → Custom CSS** (or inject via the theme file)
+3. Alternatively, replace the contents of `assets/default/css/theme.css` with the Magellan theme
+4. **Recommended approach**: Paste the CSS into **Admin Panel → Manage → Pages → "Custom CSS"** field for safe upgrades
+
+### 5c. Upload Email Templates
+1. In Admin Panel, go to **Manage → Templates**
+2. Create a new template set called "Magellan Branded"
+3. For each template, paste the corresponding HTML from `branding/email-templates/`:
+   - `ticket.autoresp.html` → **New Ticket Auto-response**
+   - `ticket.reply.html` → **Response/Reply Template**
+   - `ticket.alert.html` → **New Ticket Alert** (agent)
+   - `ticket.overdue.html` → **Overdue Ticket Alert** (agent)
+4. Set the new template set as the default for all departments
 
 ## Step 6: Seed Knowledge Base
 
@@ -103,7 +120,14 @@ cd C:\magellan-it-desk
 docker compose down
 ```
 
-Data persists in Docker volumes. To restore from backup:
+Data persists in Docker volumes.
+
+### Run a Backup Manually
 ```
-docker compose exec osticket-db mysql -u root -p osticket < /opt/backup/osticket_YYYYMMDD.sql
+docker compose exec osticket-db bash /opt/backup/backup.sh
+```
+
+### Restore from Backup
+```
+gunzip -c /opt/backup/osticket_YYYYMMDD_HHMMSS.sql.gz | docker compose exec -T osticket-db mysql -u root -p osticket
 ```
