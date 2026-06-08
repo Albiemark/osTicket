@@ -1,117 +1,145 @@
-osTicket
-========
-<a href="https://osticket.com"><img height="80px" width="80px" src="images/favicon.png"
-align="left" hspace="10" vspace="6"></a>
+# Magellan IT Service Desk - osTicket Fork
 
-**osTicket** is a widely-used open source support ticket system. It seamlessly
-integrates inquiries created via email, phone and web-based forms into a
-simple easy-to-use multi-user web interface. Manage, organize and archive
-all your support requests and responses in one place while providing your
-customers with accountability and responsiveness they deserve.
+## Overview
+White-labeled osTicket deployment for Magellan Luxury Hotels IT Service Desk. Branded, customized, and self-hosted on internal infrastructure.
 
-How osTicket works for you
---------------------------
-  1. Users create tickets via your website, email, or phone
-  1. Incoming tickets are saved and assigned to agents
-  1. Agents help your users resolve their issues
+## Fork Source
+- Upstream: https://github.com/osTicket/osTicket
+- License: GPLv2
+- Version: latest (main branch)
 
-osTicket is an attractive alternative to higher-cost and complex customer
-support systems; simple, lightweight, reliable, open source, web-based and
-easy to setup and use. The best part is, it's completely free.
+## Architectural Principle: SIMPLE DIGITAL AGILE
 
-Requirements
-------------
-  * HTTP server running Microsoft® IIS or Apache
-  * PHP version 8.2 - 8.4 (8.4 recommended)
-  * mysqli extension for PHP
-  * MySQL database version 5.5 (or greater)
+Every design decision passes through this lens:
 
-### Recommendations
-  * ctype, fileinfo, gd, gettext, iconv, imap, intl, json, mbstring,
-    Zend OPcache, phar, xml, xml-dom, and zip extensions for PHP
-  * APCu module enabled and configured for PHP
+1. **SIMPLE** - Minimal moving parts. No unnecessary abstraction. Solve the problem in front of you with the fewest components. Prefer convention over configuration. If a feature adds complexity without clear value, it doesn't ship.
 
-Deployment
-----------
-osTicket now supports bleeding-edge installations. The easiest way to
-install the software and track updates is to clone the public repository.
-Create a folder on you web server (using whatever method makes sense for
-you) and cd into it. Then clone the repository (the folder must be empty!):
+2. **DIGITAL** - Born digital, stays digital. No paper processes. No manual handoffs that can be automated. Everything is tracked, logged, and searchable. The system is the source of truth.
 
-    git clone https://github.com/osTicket/osTicket
+3. **AGILE** - Ship small, ship often. Iterative improvements over big-bang deployments. Feedback loops are short. The team adapts the tool to match how they work, not the other way around.
 
-And deploy the code into somewhere in your server's www root folder, for
-instance
+### Supporting Principles
 
-    cd osTicket
-    php manage.php deploy --setup /var/www/htdocs/osticket/
+- **Self-hosted, self-controlled.** No SaaS dependencies for core operations. Magellan data stays on Magellan infrastructure.
+- **Zero licensing cost.** Open source foundation. Customization through configuration and code, not premium tiers.
+- **ITIL-aware, not ITIL-burdened.** Follow the framework where it adds value. Skip the ceremony where it doesn't.
+- **Security by default.** HTTPS, authentication, audit trails. No shortcuts in production.
+- **Mobile-friendly.** Agents and customers can interact from any device.
+- **Brand-native.** Looks and feels like Magellan, not a third-party tool.
 
-Then you can configure your server if necessary to serve that folder, and
-visit the page and install osTicket as usual. Go ahead and even delete
-setup/ folder out of the deployment location when you’re finished. Then,
-later, you can fetch updates and deploy them (from the folder where you
-cloned the git repo into)
+## Solution Architecture
 
-    git pull
-    php manage.php deploy -v /var/www/htdocs/osticket/
+```
+Magellan IT Service Desk
+├── Customer Portal (public-facing)
+│   ├── Ticket submission
+│   ├── Knowledge Base
+│   ├── Ticket status lookup
+│   └── Magellan-branded UI
+│
+├── Agent Panel (internal)
+│   ├── Ticket management
+│   ├── SLA tracking
+│   ├── Knowledge Base authoring
+│   ├── Reports and metrics
+│   └── DevSecOps dashboard
+│
+├── Email Integration
+│   ├── Ticket creation from email
+│   ├── Notification routing
+│   └── M365 Exchange Online connector
+│
+└── Infrastructure
+    ├── Power BI Server (172.24.21.215)
+    │   ├── Docker: osTicket + MySQL
+    │   └── Behind VPN, internal only
+    │
+    └── Backup Strategy
+        ├── Daily MySQL dumps
+        └── Volume backups
+```
 
-Upgrading
----------
-osTicket supports upgrading from 1.6-rc1 and later versions. As with any
-upgrade, strongly consider a backup of your attachment files, database, and
-osTicket codebase before embarking on an upgrade. Please review our [Upgrade
-Guide](https://docs.osticket.com/en/latest/Getting%20Started/Upgrade%20and%20Migration.html)
-or the [UPGRADING.txt file](UPGRADING.txt) for upgrade instructions.
+## Directory Structure
 
-Help
-----
-Visit the [Documentation](https://docs.osticket.com/) or the
-[forum](https://forum.osticket.com/). And if you'd like professional help
-managing your osTicket installation,
-[commercial support](https://osticket.com/support/) is available.
+```
+osTicket/
+├── branding/              # Magellan brand assets
+│   ├── logos/             # Logo files (header, login, favicon)
+│   ├── css/               # Custom theme overrides
+│   └── email-templates/   # Branded email templates
+│
+├── config/                # Deployment configuration
+│   ├── docker/            # Docker Compose for production
+│   ├── nginx/             # Reverse proxy config
+│   └── ssl/               # TLS certificate config
+│
+├── docs/                  # Project documentation
+│   ├── architecture.md    # Solution architecture
+│   ├── deployment.md      # Deployment runbook (MOP)
+│   ├── customization.md   # Rebrand guide
+│   └── runbook.md         # Operational runbook
+│
+├── scripts/               # Automation
+│   ├── backup.sh          # Database backup script
+│   ├── restore.sh         # Database restore script
+│   └── seed-kb.sh         # KB content seeding
+│
+├── plugins/               # Custom plugins
+│   └── magellan-auth/     # M365 SSO plugin (future)
+│
+└── [osTicket source]      # Original osTicket codebase
+```
 
-Contributing
-------------
-Create your own fork of the project and use
-[git-flow](https://github.com/nvie/gitflow) to create a new feature. Once
-the feature is published in your fork, send a pull request to begin the
-conversation of integrating your new feature into osTicket.
+## Deployment Phases
 
-### Localization
-[![Crowdin](https://badges.crowdin.net/osticket-official/localized.svg)](https://crowdin.com/project/osticket-official)
+### Phase 1: Foundation (Week 1)
+- [ ] Finalize brand assets (logo, colors, email template)
+- [ ] Apply theme customizations
+- [ ] Configure Docker Compose for production
+- [ ] Deploy to Power BI server (with Neil/Jatinder coordination)
+- [ ] Create initial admin and agent accounts
+- [ ] Seed Knowledge Base from Magellan repo docs
 
-The interface for osTicket is now completely translatable. Language packs
-are available on the [download page](https://osticket.com/download). If you
-do not see your language there, join the [Crowdin](https://crowdin.com/project/osticket-official)
-project and request to have your language added. Languages which reach 100%
-translated are are significantly reviewed will be made available on the
-osTicket download page.
+### Phase 2: Integration (Week 2)
+- [ ] Email integration with M365 (ticket creation from email)
+- [ ] Configure SLA policies
+- [ ] Set up help topics and ticket categories
+- [ ] Configure notification templates
+- [ ] Create department/team structure
 
-The software can also be translated in place in our [JIPT site](http://jipt.i18n.osticket.com).
-Once you have a Crowdin account, login and translate the software in your browser!
+### Phase 3: Operations (Week 3+)
+- [ ] Operational runbook documentation
+- [ ] Backup automation
+- [ ] Weekly metrics reporting
+- [ ] M365 SSO (future, if needed)
+- [ ] API integrations (future: SugarCRM, monitoring alerts)
 
-Localizing strings in new code requires usage of a [few rules](setup/doc/i18n.md).
+## Key Customizations
 
-License
--------
-osTicket is released under the GPL2 license. See the included LICENSE.txt
-file for the gory details of the General Public License.
+| Area | Scope | Priority |
+|------|-------|----------|
+| Logo and branding | Replace all osTicket branding with Magellan | P0 |
+| Color theme | Magellan brand colors | P0 |
+| Login page | Custom Magellan login with company branding | P0 |
+| Email templates | Branded notifications | P0 |
+| Help topics | Magellan-specific categories | P1 |
+| KB content | Migrate from Magellan repo docs | P1 |
+| Dashboard | DevSecOps agent panel label | P2 |
+| SSO | M365/Azure AD integration | P2 |
 
-osTicket is supported by several magical open source projects including:
+## Team
 
-  * [Font-Awesome](https://fontawesome.com/)
-  * [HTMLawed](https://www.bioinformatics.org/phplabware/internal_utilities/htmLawed)
-  * [jQuery dropdown](https://labs.abeautifulsite.net/jquery-dropdown/) (Project Deleted)
-  * [jsTimezoneDetect](https://pellepim.bitbucket.org/jstz/)
-  * [laminas-mail](https://github.com/laminas/laminas-mail)
-  * [mPDF](https://github.com/mpdf/mpdf)
-  * [PasswordHash](https://www.openwall.com/phpass/)
-  * [PEAR](https://pear.php.net/package/PEAR)
-  * [PEAR/Auth_SASL](https://pear.php.net/package/Auth_SASL)
-  * [PEAR/Mail](https://pear.php.net/package/mail)
-  * [PEAR/Net_SMTP](https://pear.php.net/package/Net_SMTP)
-  * [PEAR/Net_Socket](https://pear.php.net/package/Net_Socket)
-  * [PEAR/Serivces_JSON](https://pear.php.net/package/Services_JSON)
-  * [php-gettext](https://launchpad.net/php-gettext/)
-  * [phpseclib](https://phpseclib.sourceforge.net/)
-  * [Spyc](https://github.com/mustangostang/spyc)
+| Role | Person |
+|------|--------|
+| Lead | Albie Salvador |
+| Infrastructure | Jatinder Singh |
+| Approval | Neil Mehta |
+
+## Branding Guidelines
+
+- Company: Magellan Luxury Hotels
+- Service Desk Name: Magellan IT Service Desk
+- Agent Panel Name: Magellan IT DevSecOps
+- Primary Color: TBD (get from Janelle/marketing)
+- Logo: TBD (get from Janelle/marketing)
+- Email Domain: @magellanluxuryhotels.com

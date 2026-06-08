@@ -1,0 +1,53 @@
+# Magellan IT Service Desk - Production Docker Compose
+# Target: Power BI Server (172.24.21.215)
+# Principle: SIMPLE DIGITAL AGILE
+
+services:
+  osticket-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-osticket}
+      MYSQL_USER: ${MYSQL_USER:-osticket}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - osticket-db-data:/var/lib/mysql
+      - ./scripts/backup:/opt/backup
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  osticket:
+    image: devinsolutions/osticket
+    depends_on:
+      osticket-db:
+        condition: service_healthy
+    environment:
+      MYSQL_HOST: osticket-db
+      MYSQL_USER: ${MYSQL_USER:-osticket}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-osticket}
+      INSTALL_SECRET: ${INSTALL_SECRET}
+      INSTALL_EMAIL: ${INSTALL_EMAIL:-asalvador@magellanluxuryhotels.com}
+      INSTALL_NAME: "Magellan IT Service Desk"
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-asalvador@magellanluxuryhotels.com}
+      ADMIN_FIRSTNAME: ${ADMIN_FIRSTNAME:-Albie}
+      ADMIN_LASTNAME: ${ADMIN_LASTNAME:-Salvador}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    volumes:
+      - osticket-data:/data
+    ports:
+      - "${OSTICKET_PORT:-8080}:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  osticket-db-data:
+  osticket-data:

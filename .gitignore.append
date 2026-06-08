@@ -1,0 +1,4 @@
+.env
+*.log
+branding/logos/*.psd
+branding/logos/*.ai
